@@ -3,10 +3,17 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
+import { RecaptchaComponent } from 'ng-recaptcha';
 
 if (environment.production) {
-  enableProdMode();
+    enableProdMode();
 }
 
+RecaptchaComponent.prototype.ngOnDestroy = function () {
+    if (this.subscription) {
+        this.subscription.unsubscribe();
+    }
+};
+
 platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+    .catch(err => console.error(err));

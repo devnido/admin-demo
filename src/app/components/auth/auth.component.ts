@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { RecaptchaComponent } from 'ng-recaptcha';
 
 
 declare function init_plugins();
@@ -41,12 +42,19 @@ declare function init_plugins();
                     height: 100%;
                 }`]
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent implements OnInit, OnDestroy {
 
     constructor() { }
 
     ngOnInit(): void {
         init_plugins();
+
+
     }
+
+    ngOnDestroy(): void {
+
+    }
+
 
 }
