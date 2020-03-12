@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }
 
     register(form: NgForm) {
-        this.loading = true;
+
 
 
         if (form.invalid) {
@@ -70,7 +70,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         user.confirmPassword = form.value.password;
         user.password = form.value.password;
 
-
+        this.loading = true;
         this.subscription = this.authApiService.register(user, this.resolvedCaptcha)
             .subscribe((resp: boolean) => {
                 if (resp) {

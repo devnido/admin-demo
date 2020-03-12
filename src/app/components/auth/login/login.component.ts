@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
         this.rememberMe = form.value.rememberMe;
 
+        this.loading = true;
         this.subscription = this.authApiService.login(user, this.resolvedCaptcha)
             .subscribe((resp: boolean) => {
                 if (resp) {

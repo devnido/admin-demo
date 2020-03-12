@@ -51,6 +51,7 @@ export class ForgotComponent implements OnInit, OnDestroy {
 
         const email = form.value.email;
 
+        this.loading = true;
         this.subscription = this.authApiService.forgot(email, this.resolvedCaptcha)
             .subscribe((resp: boolean) => {
                 if (resp) {
@@ -67,8 +68,8 @@ export class ForgotComponent implements OnInit, OnDestroy {
                 this.loading = false;
 
             }, (error: any) => {
+                this.loading = false;
                 if (error.status === 422) {
-                    this.loading = false;
                     Swal.fire('Error al enviar', 'El email ingresado no existe en nuestros registros', 'error');
 
                 } else {

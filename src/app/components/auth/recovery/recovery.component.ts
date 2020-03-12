@@ -46,7 +46,7 @@ export class RecoveryComponent implements OnInit, OnDestroy {
     }
 
     recovery(form: NgForm) {
-        this.loading = true;
+
         if (form.invalid) {
             return;
         }
@@ -64,6 +64,7 @@ export class RecoveryComponent implements OnInit, OnDestroy {
         this.password = form.value.password;
         this.confirmPassword = form.value.confirmPassword;
 
+        this.loading = true;
         this.subscription = this.authApiService.recovery(this.password, this.confirmPassword, this.changeToken, this.resolvedCaptcha)
             .subscribe((resp: boolean) => {
                 if (resp) {
